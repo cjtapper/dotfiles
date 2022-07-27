@@ -1,0 +1,13 @@
+auto-reload yes
+datetime-format "%Y-%m-%d"
+text-width 80
+
+show-read-feeds yes
+# feed-sort-order date-asc
+
+bind-key j down feedlist
+bind-key j next articlelist
+bind-key j down article
+bind-key k up feedlist
+bind-key k prev articlelist
+bind-key k up article

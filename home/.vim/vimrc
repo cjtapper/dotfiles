@@ -1,0 +1,174 @@
+set nocompatible
+
+" Better jumping between matches with the % key
+packadd! matchit
+
+" Enable filetype detection, loading of filetype plugins, and filetype
+" indenting
+filetype plugin indent on
+
+" Enable syntax highlighting
+syntax enable
+
+" Not sure if I still need this... If it hasn't caused issues by the next time
+" I see it, I can remove it.
+" if &shell =~# 'fish$'
+"   set shell=sh
+" endif
+
+" Set colour scheme
+let g:dracula_colorterm=0
+packadd! dracula
+colorscheme dracula
+set termguicolors
+let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+
+set autoread " Auto reload changes when file changes outside vim
+set autowrite
+set backspace=indent,eol,start
+set diffopt+=vertical
+set lazyredraw
+set linebreak
+set splitbelow
+set splitright
+
+set list
+set showbreak=⤷\ 
+set listchars=tab:→\ ,nbsp:~,extends:>,precedes:<
+
+" Trailing whitespace listchars. Hide in insert mode
+augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:·
+    au InsertLeave * :set listchars+=trail:·
+augroup END
+
+set encoding=utf-8
+set hidden
+set showcmd
+
+" Tab stuff
+set autoindent
+set expandtab
+set shiftround
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set wrap
+
+set laststatus=2 " Make the last window always have a status line
+set showmatch
+set ruler
+setlocal colorcolumn=80
+
+set visualbell t_vb= " Completely disable both visual and audio bells
+
+set scrolloff=10 " Start scrolling when I'm 10 lines from top/bottom
+
+" incremental search with highlighting
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+
+set cursorline " Highlight current line
+
+" Show line numbers
+set number
+
+" Sanely handle line navigation for long lines
+nnoremap j gj
+nnoremap k gk
+
+" Better switching between windows.
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+set backup
+set backupcopy=yes
+set noswapfile
+set undofile
+set undoreload=10000
+set undodir=~/.cache/vim/undo//
+set backupdir=~/.cache/vim/backup//
+set directory=~/.cache/vim/swap//
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" Copying/pasting text to the system clipboard.
+nnoremap  <leader>p "+p
+vnoremap <leader>y "+y
+nnoremap <leader>y VV"+y
+nnoremap <leader>Y "+y
+
+" Make Vim return to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+
+" markdown configuration
+autocmd FileType markdown setlocal conceallevel=2
+
+" PLUGIN SETTINGS
+
+" dense-analysis/ale
+let g:ale_fixers = {
+      \   'go': ['gofmt'],
+      \   'typescriptreact': ['prettier'],
+      \} 
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+" junegunn/fzf.vim
+set rtp+=/home/cjtapper/repos/fzf
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --margin=1,4"
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-b> :Buffers<Cr>
+" The below is actually <C-/>, but vim recognizes that sequence as <C-_>
+nnoremap <C-_> :Rg<Cr>
+
+" preservim/vim-markdown
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_strikethrough = 1
+
+" vim-python/python-syntax
+let g:python_highlight_all=1
+
+" vim-test/vim-test
+let test#python#pytest#file_pattern = '\v(test_[^/]+|[^/]+_test|tests)\.py$'
+let test#python#runner = 'pytest'
+let test#python#pytest#options = {
+  \ 'all': '--reuse-db',
+  \ 'nearest': '-p no:warnings',
+\}
+let test#strategy = "vimterminal"
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
+nmap <leader>tv :TestVisit<CR>
