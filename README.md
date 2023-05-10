@@ -8,9 +8,11 @@
 - `fish`
     - `fisher` as plugin manager
 - `git`
+- `i3`
 - `neovim`
 - `starship`
 - `xterm`
+- Probably many others
 
 # Other steps
-- fisher 
+- `fisher update` to install fish plugins
