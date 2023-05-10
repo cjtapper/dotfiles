@@ -1,0 +1,38 @@
+[include]
+  path = personal
+
+[advice]
+  statusHints = false
+
+[alias]
+  co = checkout
+  st = status
+
+[core]
+  pager = delta
+
+[delta]
+  navigate = true
+
+[diff]
+  colorMoved = default
+
+[init]
+  defaultBranch = main
+  templatedir = ~/.config/git/template
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  autoStash = true
+  conflictstyle = diff3
+
+[pull]
+  rebase = true
+
+[push]
+  autoSetupRemote = true
+
+[rebase]
+  autoStash = true

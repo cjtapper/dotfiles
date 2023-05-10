@@ -5,3 +5,4 @@ dotfiles/.config/fish/themes/
 dotfiles/.config/fish/functions/bass.fish
 dotfiles/.config/fish/functions/__*
 dotfiles/.config/fish/fish_variables
+dotfiles/.config/git/personal
