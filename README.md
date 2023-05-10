@@ -3,7 +3,7 @@
 - To install, `cd` into this directory.
 - Run `stow dotfiles -t ~`.
 
-# Tools
+## Tools
 I haven't automated installation of these yet, but you get the idea.
 - `fish`
     - `fisher` as plugin manager
@@ -16,5 +16,5 @@ I haven't automated installation of these yet, but you get the idea.
 - `xterm`
 - Probably many others
 
-# Other steps
+## Other steps
 - `fisher update` to install fish plugins
