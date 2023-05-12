@@ -70,13 +70,7 @@ return require('packer').startup(function(use)
     end
   })
 
-  use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {
-      enable_check_bracket_line = true,
-      check_ts = true
-    } end
-  }
+  use { "windwp/nvim-autopairs" }
 
   use {
     'numToStr/Comment.nvim',
@@ -92,6 +86,7 @@ return require('packer').startup(function(use)
   use "raimon49/requirements.txt.vim"
   use "tpope/vim-fugitive"
   use "tpope/vim-unimpaired"
+  use "tummetott/reticle.nvim"
   use "vim-test/vim-test"
 
   -- Automatically set up your configuration after cloning packer.nvim

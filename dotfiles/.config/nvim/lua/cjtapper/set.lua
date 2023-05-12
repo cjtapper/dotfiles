@@ -43,7 +43,7 @@ autocmd("InsertLeave", {
   group = trailingWhitespaceListchars,
 })
 
--- Return to the same line when you repoen a file
+-- Return to the same line when you reopen a file
 local lineReturn = vim.api.nvim_create_augroup(
   'lineReturn', { clear = true }
 )

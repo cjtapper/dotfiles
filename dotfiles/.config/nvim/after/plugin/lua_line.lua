@@ -19,6 +19,14 @@ require('lualine').setup {
       },
     },
     lualine_c = {'diff', 'diagnostics'},
-    lualine_x = {'encoding', 'filetype'}
-  }
+    lualine_x = {'encoding', 'filetype'},
+  },
+  inactive_sections = {
+    lualine_c = {
+      {
+          'filename',
+          path = 1,
+      },
+    },
+  },
 }
