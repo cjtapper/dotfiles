@@ -25,4 +25,7 @@ abbr -a -- g git
 abbr -a -- pip python -m pip
 abbr -a -- pt pytest
 abbr -a -- v $EDITOR
-abbr -a -- vim $EDITOR
+
+function vim
+    command $EDITOR
+end

@@ -23,7 +23,13 @@ return require('packer').startup(function(use)
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  use {'dracula/vim', as = 'dracula'} -- I prefer the colors in this over the nvim specific one below
+  use 'Mofiqul/dracula.nvim'
+  vim.cmd.colorscheme('dracula')
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
   use {
     'nvim-treesitter/nvim-treesitter',
