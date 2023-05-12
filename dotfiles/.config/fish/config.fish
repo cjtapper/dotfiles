@@ -27,6 +27,6 @@ abbr -a -- pip python -m pip
 abbr -a -- pt pytest
 abbr -a -- v $EDITOR
 
-function vim
-    command $EDITOR
+function vim --wraps=nvim --description 'alias vim nvim'
+  nvim $argv
 end
