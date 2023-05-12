@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+import argparse
+import sys
+from pathlib import Path
+
+
+def main(argv):
+    cmd, *unparsed_args = argv
+
+    parser = argparse.ArgumentParser(
+        description="Create a Python package at DIRECTORY, if it does not already exist."
+    )
+    parser.add_argument("DIRECTORY", type=Path)
+    parser.add_argument(
+        "-p",
+        "--parents",
+        action="store_true",
+        help="no error if existing, make parent directories as needed",
+    )
+    args = parser.parse_args(unparsed_args)
+
+    directory = args.DIRECTORY
+
+    try:
+        directory.mkdir(parents=args.parents, exist_ok=args.parents)
+    except FileNotFoundError:
+        print(f"{cmd}: cannot create package ‘{directory}’: No such file or directory")
+        return 1
+    except FileExistsError:
+        print(f"{cmd}: cannot create package ‘{directory}’: File exists")
+        return 1
+
+    init_path = directory / "__init__.py"
+    init_path.touch()
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv))

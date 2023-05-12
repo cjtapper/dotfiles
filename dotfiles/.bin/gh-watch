@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Watch the last Github actions run
+watch gh run list --limit 1

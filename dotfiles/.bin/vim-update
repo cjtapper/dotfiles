@@ -1,0 +1,9 @@
+#! /usr/bin/env fish
+# Update vim plugin git repos
+for dir in (find ~/.vim/pack/vendor/start -mindepth 1 -maxdepth 1 -type d)
+  pushd $dir
+  echo (basename (pwd))
+  git pull
+  vim -c "helptags doc" -c "q"
+  popd
+end

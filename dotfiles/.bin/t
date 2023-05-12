@@ -1,0 +1,39 @@
+#!/usr/bin/env fish
+# Quickly create and/or attach to a tmux session.
+# Heavily inspired by @ThePrimeagen's tmux-sessionizer:
+# https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+# and @joshmedeski's tmux-session-wizard:
+# https://github.com/joshmedeski/tmux-session-wizard
+
+# ~~I'm using fish rather than bash because this relies on z and I cbf finding
+# an alternative~~.
+# FIXME: I've since changed to zoxide rather than z.fish, so I could potentially
+# migrate this to bash.
+
+set selection ( zoxide query -l | fzf  )
+
+if test -z $selection
+  exit 0
+end
+
+set folder ( basename $selection )
+set session_name ( echo $folder | tr '.' '_' | tr ' ' '_' | tr ':' '_' )
+
+set tmux_is_running ( pgrep tmux )
+set in_tmux_session "$TMUX"
+
+zoxide add "$selection"
+if test -z "$in_tmux_session"; and test -z "$tmux_is_running"
+  tmux new-session -s "$session_name" -c "$selection"
+  exit 0
+end
+
+if ! tmux has-session -t="$session_name" 2> /dev/null
+  tmux new-session -ds "$session_name" -c "$selection"
+end
+
+if test -n "$TMUX"
+  tmux switch-client -t $session_name
+else
+  tmux attach -t $session_name
+end
