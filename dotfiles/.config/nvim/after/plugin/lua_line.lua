@@ -14,8 +14,9 @@ require('lualine').setup {
     lualine_b = {
       {
         'filename',
+        path = 1, -- 1: Relative path
         color = { fg = colors.white, bg = bg },
-      }
+      },
     },
     lualine_c = {'diff', 'diagnostics'},
     lualine_x = {'encoding', 'filetype'}
