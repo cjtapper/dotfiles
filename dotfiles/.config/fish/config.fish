@@ -10,10 +10,11 @@ set -gx LANG en_AU.UTF-8
 
 if status --is-interactive;
   starship init fish | source
-  direnv hook fish | source
-  rbenv init - fish | source
-  pyenv init - | source
 end
+direnv hook fish | source
+rbenv init - fish | source
+pyenv init - | source
+zoxide init fish | source
 
 function fish_user_key_bindings
   # Make Ctrl-z return last suspended job to the foreground

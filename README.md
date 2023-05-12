@@ -14,6 +14,7 @@ I haven't automated installation of these yet, but you get the idea.
 - `starship`
 - `tmux`
 - `xterm`
+- `zoxide` for better `cd`ing and autojump
 - Probably many others
 
 ## Other steps
