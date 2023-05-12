@@ -20,7 +20,10 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
-  }
+  },
+  endwise = {
+    enable = true,
+  },
 }
 
 require'treesitter-context'.setup{

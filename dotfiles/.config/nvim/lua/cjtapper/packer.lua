@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
     {run = ':TSUpdate'}
   }
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'RRethy/nvim-treesitter-endwise' -- Treesitter powered port of tpope/vim-endwise
 
   use 'mbbill/undotree'
 
