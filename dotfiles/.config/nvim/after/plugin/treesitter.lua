@@ -1,6 +1,17 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "javascript", "lua", "markdown", "markdown_inline", "python", "typescript", "vim", "vimdoc", "query" },
+  ensure_installed = {
+    "c",
+    "javascript",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "query",
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -29,3 +40,8 @@ require'nvim-treesitter.configs'.setup {
 require'treesitter-context'.setup{
   separator = "─"
 }
+
+local treesj = require('treesj')
+vim.keymap.set("n", "<leader>jm", treesj.toggle)
+vim.keymap.set("n", "<leader>jj", treesj.join)
+vim.keymap.set("n", "<leader>js", treesj.split)
