@@ -71,12 +71,10 @@ return require('packer').startup(function(use)
     end
   })
 
-  use { "windwp/nvim-autopairs" }
-
   use {
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+        require('Comment').setup({})
     end
   }
 
@@ -89,6 +87,7 @@ return require('packer').startup(function(use)
   use "tpope/vim-unimpaired"
   use "tummetott/reticle.nvim"
   use "vim-test/vim-test"
+  use "windwp/nvim-autopairs"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
