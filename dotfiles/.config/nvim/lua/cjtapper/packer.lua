@@ -94,7 +94,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  use "Glench/Vim-Jinja2-Syntax"
   use "alvan/vim-closetag"
   use "khaveesh/vim-fish-syntax"
   use "lukas-reineke/indent-blankline.nvim"
