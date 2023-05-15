@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+PYTHON_37=`pyenv latest 3.7`
+PYTHON_38=`pyenv latest 3.8`
+PYTHON_39=`pyenv latest 3.9`
+PYTHON_310=`pyenv latest 3.10`
+PYTHON_311=`pyenv latest 3.11`
+PYTHON_ALL="$PYTHON_311 $PYTHON_310 $PYTHON_39 $PYTHON_38 $PYTHON_37"
+DEFAULT_PYTHON_VERSION=$PYTHON_311
+
+pyenv update
+
+pyenv install --skip-existing 3.7:latest
+pyenv install --skip-existing 3.8:latest
+pyenv install --skip-existing 3.9:latest
+pyenv install --skip-existing 3.10:latest
+pyenv install --skip-existing 3.11:latest
+
+pyenv global $PYTHON_ALL
+
+PIP_REQUIRE_VIRTUALENV=false python -m pip install --upgrade \
+    pip \
+    pipx \
+    setuptools \
+    virtualenv \
+    wheel
