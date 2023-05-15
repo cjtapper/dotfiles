@@ -100,7 +100,6 @@ return require('packer').startup(function(use)
   })
 
   use "alvan/vim-closetag"
-  use "khaveesh/vim-fish-syntax"
   use "lukas-reineke/indent-blankline.nvim"
   use "raimon49/requirements.txt.vim"
   use "tpope/vim-fugitive"
