@@ -94,6 +94,11 @@ return require('packer').startup(function(use)
     end
   }
 
+  use({
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+  })
+
   use "alvan/vim-closetag"
   use "khaveesh/vim-fish-syntax"
   use "lukas-reineke/indent-blankline.nvim"
