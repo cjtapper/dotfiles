@@ -1,7 +1,7 @@
 local lsp_zero = require('lsp-zero')
 local lspconfig = require('lspconfig')
 
-lsp_zero.preset("recommended")
+lsp_zero.preset("minimal")
 
 lsp_zero.ensure_installed({
   'lua_ls',
@@ -56,17 +56,18 @@ lspconfig.solargraph.setup({
   }
 })
 
-lsp_zero.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+vim.fn.sign_define({
+  {name = 'error', text = 'E', hl = 'DiagnosticSignError', numhl = nil},
+  {name = 'hint',  text = 'H', hl = 'DiagnosticSignHint',  numhl = nil},
+  {name = 'info',  text = 'I', hl = 'DiagnosticSignInfo',  numhl = nil},
+  {name = 'warn',  text = 'W', hl = 'DiagnosticSignWarn',  numhl = nil},
 })
 
-lsp_zero.on_attach(function(client, bufnr)
+vim.diagnostic.config({
+    virtual_text = true
+})
+
+lsp_zero.on_attach(function(_, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -82,9 +83,5 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 lsp_zero.setup()
-
-vim.diagnostic.config({
-    virtual_text = true
-})
 
 vim.cmd [[autocmd BufWritePre *.py lua vim.lsp.buf.format()]]
