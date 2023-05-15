@@ -1,26 +1,28 @@
 #!/usr/bin/env bash
 
-PYTHON_37=`pyenv latest 3.7`
-PYTHON_38=`pyenv latest 3.8`
-PYTHON_39=`pyenv latest 3.9`
-PYTHON_310=`pyenv latest 3.10`
-PYTHON_311=`pyenv latest 3.11`
-PYTHON_ALL="$PYTHON_311 $PYTHON_310 $PYTHON_39 $PYTHON_38 $PYTHON_37"
-DEFAULT_PYTHON_VERSION=$PYTHON_311
+PYTHON_VERSIONS="3.11 3.10 3.9 3.8 3.7"
 
+# requires https://github.com/pyenv/pyenv-update
 pyenv update
 
-pyenv install --skip-existing 3.7:latest
-pyenv install --skip-existing 3.8:latest
-pyenv install --skip-existing 3.9:latest
-pyenv install --skip-existing 3.10:latest
-pyenv install --skip-existing 3.11:latest
+installed_versions=
 
-pyenv global $PYTHON_ALL
+for version in $PYTHON_VERSIONS;
+do
+  # requires https://github.com/momo-lab/xxenv-latest
+  pyenv install --skip-existing "$version:latest"
+  installed_version=$(pyenv latest $version) 
 
-PIP_REQUIRE_VIRTUALENV=false python -m pip install --upgrade \
+  pyenv shell $installed_version
+  PIP_REQUIRE_VIRTUALENV=false python -m pip install --upgrade \
     pip \
     pipx \
     setuptools \
     virtualenv \
     wheel
+  pyenv shell -
+
+  installed_versions="$installed_versions $installed_version"
+done
+
+pyenv global $installed_versions
