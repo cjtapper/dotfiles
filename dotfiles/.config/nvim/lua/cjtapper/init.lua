@@ -1,3 +1,3 @@
-require("cjtapper.packer")
 require("cjtapper.remap")
 require("cjtapper.set")
+require("cjtapper.lazy")
