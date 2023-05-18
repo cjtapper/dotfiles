@@ -25,15 +25,25 @@ return {
     local project_files = function()
       vim.fn.system('git rev-parse --is-inside-work-tree')
       if vim.v.shell_error == 0 then
-        require"telescope.builtin".git_files()
+        builtin.git_files()
       else
-        require"telescope.builtin".find_files()
+        builtin.find_files()
       end
     end
 
+    local fuzzy_grep = function()
+      -- fzf style fuzzy-grep
+      builtin.grep_string{
+        shorten_path = true,
+        word_match = "-w",
+        only_sort_text = true,
+        search = '',
+      }
+    end
+
     vim.keymap.set('n', '<C-p>', project_files, {})
-    vim.keymap.set('n', '<C-/>', builtin.live_grep, {})
-    vim.keymap.set('n', '<C-_>', builtin.live_grep, {})
+    vim.keymap.set('n', '<C-/>', fuzzy_grep, {})
+    vim.keymap.set('n', '<C-_>', fuzzy_grep, {})
     vim.keymap.set('n', '<C-b>', builtin.buffers, {})
     vim.keymap.set('n', '<leader>s', builtin.treesitter, {})
   end
