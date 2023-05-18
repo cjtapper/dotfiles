@@ -19,6 +19,10 @@ return {
     }
 
     cmp.setup({
+      sources = cmp.config.sources({
+        { name = "copilot" },
+        { name = 'nvim_lsp' },
+      }),
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)

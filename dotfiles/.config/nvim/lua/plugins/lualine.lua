@@ -2,12 +2,6 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = {{ 'nvim-tree/nvim-web-devicons', lazy = true }},
   config = function ()
-    local dracula = require("dracula")
-    local configs = dracula.configs()
-    local colors = dracula.colors()
-
-    local bg = configs.lualine_bg_color or colors.black
-
     require('lualine').setup{
       options = {
         theme = 'dracula-nvim',
@@ -15,14 +9,16 @@ return {
         component_separators = '',
       },
       sections = {
-        lualine_b = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch'},
+        lualine_c = {
           {
             'filename',
             path = 1, -- 1: Relative path
-            color = { fg = colors.white, bg = bg },
           },
+          'diff',
+          'diagnostics',
         },
-        lualine_c = {'diff', 'diagnostics'},
         lualine_x = {'encoding', 'filetype'},
       },
       inactive_sections = {
