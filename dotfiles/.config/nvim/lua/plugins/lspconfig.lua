@@ -27,8 +27,36 @@ return  {
           }
         }
       })
+      lspconfig.pylsp.setup({
+        settings = {
+          pylsp = {
+            plugins = {
+              black = {
+                enabled = true
+              },
+              flake8 = {
+                enabled = true
+              },
+              isort = {
+                enabled = true
+              },
+              mccabe = {
+                enabled = false
+              },
+              pyflakes = {
+                enabled = false
+              },
+              pycodestyle = {
+                enabled = false
+              },
+              rope_autoimport = {
+                enabled = true
+              }
+            }
+          },
+        }
+      })
 
-      lspconfig.pyright.setup({})
       lspconfig.solargraph.setup({
         settings= {
           diagnostics = true,
