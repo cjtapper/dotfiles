@@ -11,6 +11,23 @@
 [core]
   pager = delta
 
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  frag = magenta bold
+  meta = yellow bold
+  new = green bold
+  old = red bold
+  whitespace = red reverse
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+
 [delta]
   navigate = true
 
