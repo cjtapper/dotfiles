@@ -34,6 +34,9 @@
 [diff]
   colorMoved = default
 
+[help]
+  autoCorrect = immediate
+
 [init]
   defaultBranch = main
   templatedir = ~/.config/git/template
