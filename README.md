@@ -19,3 +19,6 @@ I haven't automated installation of these yet, but you get the idea.
 
 ## Other steps
 - `fisher update` to install fish plugins
+
+## Getting tmux-256color working on macOS
+https://gist.github.com/cjtapper/a375b0fff7b0b58776a2a0008b123606
