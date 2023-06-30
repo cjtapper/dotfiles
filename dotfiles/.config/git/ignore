@@ -1,2 +1,4 @@
 .envrc
+.irb_history
+logfile
 tags

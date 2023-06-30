@@ -6,4 +6,5 @@ dotfiles/.config/fish/functions/bass.fish
 dotfiles/.config/fish/themes/
 dotfiles/.config/gh/hosts.yml
 dotfiles/.config/git/personal
+dotfiles/.config/git/work
 dotfiles/.config/nvim/plugin/packer_compiled.lua
