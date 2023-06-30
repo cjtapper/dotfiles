@@ -58,7 +58,6 @@ return {
   },
   {
     "vim-test/vim-test",
-    ft = "python",
     config = function()
       vim.g["test#python#pytest#file#pattern"] = [[\v(test_[^/]+|[^/]+_test|tests)\.py$]]
       vim.g["test#python#runner"] = 'pytest'
@@ -86,6 +85,49 @@ return {
     lazy = true,
     config = function()
       require('lsp-zero.settings').preset("minimal")
+    end
+  },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      local null_ls = require('null-ls')
+      local conditional = function(fn)
+        local utils = require("null-ls.utils").make_conditional_utils()
+        return fn(utils)
+      end
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.diagnostics.rubocop,
+        },
+
+        -- Here we set a conditional to call the rubocop formatter. If we have a Gemfile in the project, we call "bundle exec rubocop", if not we only call "rubocop".
+        conditional(function(utils)
+          return utils.root_has_file("Gemfile")
+            and null_ls.builtins.formatting.rubocop.with({
+              command = "bundle",
+              args = vim.list_extend(
+                { "exec", "rubocop" },
+                null_ls.builtins.formatting.rubocop._opts.args
+              ),
+            })
+            or null_ls.builtins.formatting.rubocop
+        end),
+
+        -- Same as above, but with diagnostics.rubocop to make sure we use the proper rubocop version for the project
+        conditional(function(utils)
+          return utils.root_has_file("Gemfile")
+            and null_ls.builtins.diagnostics.rubocop.with({
+              command = "bundle",
+              args = vim.list_extend(
+                { "exec", "rubocop" },
+                null_ls.builtins.diagnostics.rubocop._opts.args
+              ),
+            })
+            or null_ls.builtins.diagnostics.rubocop
+        end),
+
+      })
     end
   },
   "alvan/vim-closetag",

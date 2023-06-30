@@ -24,6 +24,8 @@ vim.opt.splitright = true
 vim.opt.list = true
 vim.opt.listchars = { tab = "→ ", nbsp = "~", extends = ">", precedes = "<"}
 
+vim.opt.autoread = true
+
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.cache/vim/undo"

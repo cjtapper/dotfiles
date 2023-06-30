@@ -28,3 +28,6 @@ vim.keymap.set("n", "J", "mzJ`z")
 
 -- Prevent entering the Ex blackhole
 vim.keymap.set("n", "Q", "<nop>")
+
+-- Hide search highlighting
+vim.keymap.set("n", "<leader>h", vim.cmd.noh)

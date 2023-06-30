@@ -31,20 +31,11 @@ return {
       end
     end
 
-    local fuzzy_grep = function()
-      -- fzf style fuzzy-grep
-      builtin.grep_string{
-        shorten_path = true,
-        word_match = "-w",
-        only_sort_text = true,
-        search = '',
-      }
-    end
-
     vim.keymap.set('n', '<C-p>', project_files, {})
-    vim.keymap.set('n', '<C-/>', fuzzy_grep, {})
-    vim.keymap.set('n', '<C-_>', fuzzy_grep, {})
+    vim.keymap.set('n', '<C-/>', builtin.live_grep, {})
+    vim.keymap.set('n', '<C-_>', builtin.live_grep, {})
     vim.keymap.set('n', '<C-b>', builtin.buffers, {})
     vim.keymap.set('n', '<leader>s', builtin.treesitter, {})
+    vim.keymap.set('n', '<leader>*', builtin.grep_string, {})
   end
 }

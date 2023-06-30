@@ -59,7 +59,7 @@ return  {
 
       lspconfig.solargraph.setup({
         settings= {
-          diagnostics = true,
+          diagnostics = false,
         }
       })
 
