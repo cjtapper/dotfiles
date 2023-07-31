@@ -130,6 +130,10 @@ return {
       })
     end
   },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = true
+  },
   "alvan/vim-closetag",
   "lukas-reineke/indent-blankline.nvim",
   "raimon49/requirements.txt.vim",
