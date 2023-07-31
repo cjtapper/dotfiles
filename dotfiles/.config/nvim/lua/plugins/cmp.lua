@@ -2,6 +2,7 @@ return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
+    { "hrsh7th/cmp-buffer" },
     {'L3MON4D3/LuaSnip'},
   },
   config = function()
@@ -20,8 +21,9 @@ return {
 
     cmp.setup({
       sources = cmp.config.sources({
+        { name = "buffer" },
         { name = "copilot" },
-        { name = 'nvim_lsp' },
+        { name = "nvim_lsp" },
       }),
       snippet = {
         expand = function(args)
