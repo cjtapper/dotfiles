@@ -137,7 +137,12 @@ return {
   "alvan/vim-closetag",
   "lukas-reineke/indent-blankline.nvim",
   "raimon49/requirements.txt.vim",
-  "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.keymap.set("n", "<leader>gb", ":Git blame<cr>")
+    end
+  },
   "tpope/vim-unimpaired",
   "tummetott/reticle.nvim",
 }
