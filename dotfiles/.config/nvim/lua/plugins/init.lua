@@ -132,7 +132,11 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
-    config = true
+    config = function()
+      local gitsigns = require("gitsigns")
+      gitsigns.setup()
+      vim.keymap.set({"n", "x"}, "<leader>ghr", gitsigns.reset_hunk)
+    end
   },
   "alvan/vim-closetag",
   "lukas-reineke/indent-blankline.nvim",
