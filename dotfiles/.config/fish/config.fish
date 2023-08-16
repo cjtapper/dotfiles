@@ -39,3 +39,6 @@ end
 
 # Load machine specific config
 source (dirname (status -f))/(hostname).config.fish 2>/dev/null
+
+# Created by `pipx` on 2023-08-04 07:01:10
+set PATH $PATH /Users/cjtapper/.local/bin
