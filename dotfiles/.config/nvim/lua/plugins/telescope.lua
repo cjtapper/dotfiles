@@ -18,6 +18,15 @@ return {
           }
         }
       },
+      pickers = {
+        buffers = {
+          mappings = {
+            i = {
+              ["<c-x>"] = "delete_buffer",
+            }
+          }
+        }
+      }
     }
     telescope.load_extension('fzf')
 
