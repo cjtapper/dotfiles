@@ -26,12 +26,15 @@ function fish_user_key_bindings
     bind \ct 't;commandline -f repaint'
 end
 
-abbr -a -- g git
-abbr -a -- pip python -m pip
-abbr -a -- pt pytest
-abbr -a -- v $EDITOR
-abbr -a -- tf terraform
-abbr -a -- mk make
+abbr --add -- g git
+abbr --add -- gaa git add -A
+abbr --add --set-cursor -- gcm git commit -m \"%\"
+
+abbr --add -- pip python -m pip
+abbr --add -- pt pytest
+abbr --add -- v $EDITOR
+abbr --add -- tf terraform
+abbr --add -- mk make
 
 function vim --wraps=nvim --description 'alias vim nvim'
     nvim $argv
