@@ -7,7 +7,7 @@
 
 [alias]
   co = checkout
-  st = status --short --branch
+  st = status
 
 [core]
   pager = delta
