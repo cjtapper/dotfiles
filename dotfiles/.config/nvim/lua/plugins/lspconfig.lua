@@ -27,11 +27,12 @@ return  {
         }
       })
       -- Note: Plugins for black, isort, flake8 need to be installed in the same
-      -- venv as pyslp 
+      -- venv as pylsp.
+      -- Make sure you use the ones prefixed with "python-lsp-", not "pyls-"
       lspconfig.pylsp.setup({
         settings = {
           pylsp = {
-            configurationSources = {'flake8'},
+            -- configurationSources = {'flake8'},
             plugins = {
               black = { enabled = true },
               flake8 = { enabled = true },
@@ -65,6 +66,7 @@ return  {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
           local opts = {buffer = bufnr, remap = false}
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
           vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
           vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -77,8 +79,35 @@ return  {
           vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
           vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
           vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
+
+          -- Highlight current variable and usages on CursorHold
+          if client.server_capabilities.documentHighlightProvider then
+            vim.cmd([[
+            hi! link LspReferenceRead Visual
+            hi! link LspReferenceText Visual
+            hi! link LspReferenceWrite Visual
+            ]])
+
+            local gid = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+            vim.api.nvim_create_autocmd("CursorHold" , {
+              group = gid,
+              buffer = bufnr,
+              callback = function ()
+                vim.lsp.buf.document_highlight()
+              end
+            })
+
+            vim.api.nvim_create_autocmd("CursorMoved" , {
+              group = gid,
+              buffer = bufnr,
+              callback = function ()
+                vim.lsp.buf.clear_references()
+              end
+            })
+          end
         end,
       })
+
     end
   }
 }

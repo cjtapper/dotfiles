@@ -35,6 +35,8 @@ vim.opt.undoreload = 10000
 vim.opt.textwidth = 80
 vim.opt.formatoptions = {"c", "q"}
 
+vim.opt.updatetime=500 -- For CursorHold events
+
 -- Trailing whitespace listchars. Hide in insert mode
 local trailingWhitespaceListchars = vim.api.nvim_create_augroup(
   'trailingWhitespaceListchars', { clear = true }
