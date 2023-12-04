@@ -31,7 +31,8 @@ abbr --add -- gaa git add --all
 abbr --add --set-cursor -- gcm git commit --message \"%\"
 abbr --add -- gds git diff --staged
 abbr --add --set-cursor -- gsc git switch --create \"%\"
-abbr --add --set-cursor -- gsm git switch "main"
+abbr --add -- gsm git switch "main"
+abbr --add -- gs- git switch -
 
 abbr --add -- pip python -m pip
 abbr --add -- pt pytest
