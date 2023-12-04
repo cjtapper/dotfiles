@@ -105,6 +105,19 @@ return  {
               end
             })
           end
+
+          -- Format on save
+          if client.supports_method("textDocument/formatting") then
+            local gid = vim.api.nvim_create_augroup("LspFormatting", {})
+            vim.api.nvim_clear_autocmds({ group = gid, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = gid,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ async = false})
+                end,
+            })
+        end
         end,
       })
 
