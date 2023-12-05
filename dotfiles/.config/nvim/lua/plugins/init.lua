@@ -91,8 +91,24 @@ return {
     'lewis6991/gitsigns.nvim',
     config = function()
       local gitsigns = require("gitsigns")
-      gitsigns.setup()
-      vim.keymap.set({"n", "x"}, "<leader>ghr", gitsigns.reset_hunk)
+      gitsigns.setup{
+        on_attach = function(bufnr)
+          vim.keymap.set({"n", "x"}, "<leader>ghr", gitsigns.reset_hunk, {buffer=bufnr})
+
+           -- Navigation
+          vim.keymap.set('n', ']c', function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gitsigns.next_hunk() end)
+            return '<Ignore>'
+          end, {expr=true, buffer=buffnr})
+
+          vim.keymap.set('n', '[c', function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gitsigns.prev_hunk() end)
+            return '<Ignore>'
+          end, {expr=true, buffer=buffnr})
+        end
+      }
     end
   },
   "alvan/vim-closetag",
