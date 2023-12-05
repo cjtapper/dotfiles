@@ -59,7 +59,7 @@ return {
   {
     "vim-test/vim-test",
     config = function()
-      vim.g["test#python#pytest#file#pattern"] = [[\v(test_[^/]+|[^/]+_test|tests)\.py$]]
+      vim.g["test#python#pytest#file_pattern"] = [[\v(test_[^/]+|[^/]+_test|tests)\.py$]]
       vim.g["test#python#runner"] = 'pytest'
       vim.g["test#python#pytest#options"] = {
         all = '--reuse-db',
