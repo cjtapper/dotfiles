@@ -121,7 +121,6 @@ return {
     end
   },
   "tpope/vim-unimpaired",
-  "tummetott/reticle.nvim",
   {
     "slim-template/vim-slim",
     ft = { "slim" },
