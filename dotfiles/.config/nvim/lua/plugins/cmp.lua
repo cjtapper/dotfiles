@@ -21,9 +21,14 @@ return {
 
     cmp.setup({
       sources = cmp.config.sources({
-        { name = "buffer" },
-        { name = "copilot" },
         { name = "nvim_lsp" },
+        {
+          name = "buffer",
+          option = {
+            get_bufnrs = vim.api.nvim_list_bufs
+          },
+        },
+        { name = "copilot" },
       }),
       snippet = {
         expand = function(args)
