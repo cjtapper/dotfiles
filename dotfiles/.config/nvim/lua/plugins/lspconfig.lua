@@ -37,7 +37,7 @@ return  {
               black = { enabled = true },
               flake8 = { enabled = true },
               isort = { enabled = true },
-              rope_autoimport = { enabled = true, completions = false },
+              rope_autoimport = { enabled = true },
               mccabe = { enabled = false },
               pyflakes = { enabled = false },
               pycodestyle = { enabled = false },
