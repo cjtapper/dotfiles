@@ -3,6 +3,7 @@ return {
   event = 'InsertEnter',
   dependencies = {
     { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
     {'L3MON4D3/LuaSnip'},
   },
   config = function()
@@ -28,6 +29,7 @@ return {
             get_bufnrs = vim.api.nvim_list_bufs
           },
         },
+        { name = "path" },
         { name = "copilot" },
       }),
       snippet = {
