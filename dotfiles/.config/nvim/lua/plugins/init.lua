@@ -17,7 +17,7 @@ return {
   },
   {
     'numToStr/Comment.nvim',
-    config = true,
+    opts = {},
   },
   {
     "tummetott/reticle.nvim",
@@ -27,7 +27,6 @@ return {
       },
       disable_in_insert = false,
     }
-
   },
   {
     "lukas-reineke/indent-blankline.nvim",
