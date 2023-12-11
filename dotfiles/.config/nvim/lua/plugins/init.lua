@@ -112,7 +112,7 @@ return {
     end
   },
   "alvan/vim-closetag",
-  "lukas-reineke/indent-blankline.nvim",
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   "raimon49/requirements.txt.vim",
   {
     "tpope/vim-fugitive",
