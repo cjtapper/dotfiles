@@ -21,7 +21,24 @@ return {
   },
   {
     "tummetott/reticle.nvim",
-    opts = { disable_in_insert = false }
+    opts = {
+      on_startup = {
+        cursorline = true,
+      },
+      disable_in_insert = false,
+    }
+
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      scope = {
+        enabled = true,
+        show_start = false,
+        show_end = false,
+      },
+    },
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
@@ -112,17 +129,6 @@ return {
     end
   },
   "alvan/vim-closetag",
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {
-      scope = {
-        enabled = true,
-        show_start = false,
-        show_end = false,
-      },
-    },
-  },
   "raimon49/requirements.txt.vim",
   {
     "tpope/vim-fugitive",
