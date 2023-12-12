@@ -30,7 +30,6 @@ return {
           },
         },
         { name = "path" },
-        { name = "copilot" },
       }),
       snippet = {
         expand = function(args)

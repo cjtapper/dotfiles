@@ -40,10 +40,6 @@ return {
     },
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
-    opts = { separator = "─" },
-  },
-  {
     'Wansmer/treesj',
     dependencies = { 'nvim-treesitter' },
     opts = { use_default_keymaps = false },
