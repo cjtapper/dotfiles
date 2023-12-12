@@ -49,12 +49,6 @@ return {
     end
   },
   {
-    'mbbill/undotree',
-    config = function()
-      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-    end
-  },
-  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = true,
@@ -90,14 +84,6 @@ return {
       pcall(vim.cmd, 'MasonUpdate')
     end,
     config = true
-  },
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    lazy = true,
-    config = function()
-      require('lsp-zero.settings').preset("minimal")
-    end
   },
   {
     'lewis6991/gitsigns.nvim',
