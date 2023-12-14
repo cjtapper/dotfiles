@@ -1,11 +1,11 @@
-return  {
+return {
   {
     'neovim/nvim-lspconfig',
     cmd = 'LspInfo',
-    event = {'BufReadPre', 'BufNewFile'},
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'williamboman/mason-lspconfig.nvim'},
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'williamboman/mason-lspconfig.nvim' },
       {
         'williamboman/mason.nvim',
         build = function()
@@ -47,16 +47,16 @@ return  {
       })
 
       lspconfig.solargraph.setup({
-        settings= {
+        settings = {
           diagnostics = false,
         }
       })
 
       vim.fn.sign_define({
-        {name = 'error', text = 'E', hl = 'DiagnosticSignError', numhl = nil},
-        {name = 'hint',  text = 'H', hl = 'DiagnosticSignHint',  numhl = nil},
-        {name = 'info',  text = 'I', hl = 'DiagnosticSignInfo',  numhl = nil},
-        {name = 'warn',  text = 'W', hl = 'DiagnosticSignWarn',  numhl = nil},
+        { name = 'error', text = 'E', hl = 'DiagnosticSignError', numhl = nil },
+        { name = 'hint',  text = 'H', hl = 'DiagnosticSignHint',  numhl = nil },
+        { name = 'info',  text = 'I', hl = 'DiagnosticSignInfo',  numhl = nil },
+        { name = 'warn',  text = 'W', hl = 'DiagnosticSignWarn',  numhl = nil },
       })
 
       vim.diagnostic.config({
@@ -66,8 +66,8 @@ return  {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
-          bufnr = ev.buf
-          local opts = {buffer = bufnr, remap = false}
+          local bufnr = ev.buf
+          local opts = { buffer = bufnr, remap = false }
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
           vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -91,18 +91,18 @@ return  {
             ]])
 
             local gid = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-            vim.api.nvim_create_autocmd("CursorHold" , {
+            vim.api.nvim_create_autocmd("CursorHold", {
               group = gid,
               buffer = bufnr,
-              callback = function ()
+              callback = function()
                 vim.lsp.buf.document_highlight()
               end
             })
 
-            vim.api.nvim_create_autocmd("CursorMoved" , {
+            vim.api.nvim_create_autocmd("CursorMoved", {
               group = gid,
               buffer = bufnr,
-              callback = function ()
+              callback = function()
                 vim.lsp.buf.clear_references()
               end
             })
@@ -113,16 +113,15 @@ return  {
             local gid = vim.api.nvim_create_augroup("LspFormatting", {})
             vim.api.nvim_clear_autocmds({ group = gid, buffer = bufnr })
             vim.api.nvim_create_autocmd("BufWritePre", {
-                group = gid,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ async = false})
-                end,
+              group = gid,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
             })
-        end
+          end
         end,
       })
-
     end
   }
 }
