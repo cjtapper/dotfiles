@@ -22,7 +22,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "→ ", nbsp = "~", extends = ">", precedes = "<"}
+vim.opt.listchars = { tab = "→ ", nbsp = "~", extends = ">", precedes = "<" }
 
 vim.opt.autoread = true
 
@@ -33,9 +33,9 @@ vim.opt.undofile = true
 vim.opt.undoreload = 10000
 
 vim.opt.textwidth = 80
-vim.opt.formatoptions = {"c", "q"}
+vim.opt.formatoptions = { "c", "q" }
 
-vim.opt.updatetime=500 -- For CursorHold events
+vim.opt.updatetime = 500 -- For CursorHold events
 
 -- Trailing whitespace listchars. Hide in insert mode
 local trailingWhitespaceListchars = vim.api.nvim_create_augroup(
@@ -56,27 +56,28 @@ local lineReturn = vim.api.nvim_create_augroup(
 )
 autocmd(
   "BufReadPost",
-  {callback = function()
-    local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
-    if {row, col} ~= {0, 0} then
-      vim.api.nvim_win_set_cursor(0, {row, 0})
-    end
-  end,
-  group = lineReturn
+  {
+    callback = function()
+      local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
+      if { row, col } ~= { 0, 0 } then
+        vim.api.nvim_win_set_cursor(0, { row, 0 })
+      end
+    end,
+    group = lineReturn
   }
 )
 
 -- Hightlight yanked text
 local yank_group = augroup('HighlightYank', {})
 autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
-        })
-    end,
+  group = yank_group,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end,
 })
 
 vim.opt.laststatus = 2
