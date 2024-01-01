@@ -1,5 +1,6 @@
 .envrc
 .irb_history
 .ropeproject
+.DS_Store
 logfile
 tags

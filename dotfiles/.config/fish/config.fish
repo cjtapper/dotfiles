@@ -3,7 +3,7 @@
 # Disable the greeting
 set fish_greeting
 
-fish_config theme choose "Dracula Official"
+fish_config theme choose "Dracula"
 
 set -gx EDITOR nvim
 set -gx LANG en_AU.UTF-8
