@@ -9,7 +9,7 @@ return {
 
       dracula.setup({
         overrides = {
-          ColorColumn = {bg = colors.menu},
+          ColorColumn = { bg = colors.menu },
         }
       })
       vim.cmd.colorscheme('dracula')
@@ -78,7 +78,7 @@ return {
       vim.api.nvim_set_keymap('n', '<leader>tl', ':TestLast<CR>', { noremap = true })
     end
   },
-  {                                      -- Optional
+  { -- Optional
     'williamboman/mason.nvim',
     build = function()
       pcall(vim.cmd, 'MasonUpdate')
@@ -89,22 +89,22 @@ return {
     'lewis6991/gitsigns.nvim',
     config = function()
       local gitsigns = require("gitsigns")
-      gitsigns.setup{
+      gitsigns.setup {
         on_attach = function(bufnr)
-          vim.keymap.set({"n", "x"}, "<leader>ghr", gitsigns.reset_hunk, {buffer=bufnr})
+          vim.keymap.set({ "n", "x" }, "<leader>ghr", gitsigns.reset_hunk, { buffer = bufnr })
 
-           -- Navigation
+          -- Navigation
           vim.keymap.set('n', ']c', function()
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gitsigns.next_hunk() end)
             return '<Ignore>'
-          end, {expr=true, buffer=buffnr})
+          end, { expr = true, buffer = bufnr })
 
           vim.keymap.set('n', '[c', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gitsigns.prev_hunk() end)
             return '<Ignore>'
-          end, {expr=true, buffer=buffnr})
+          end, { expr = true, buffer = bufnr })
         end
       }
     end
