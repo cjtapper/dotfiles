@@ -92,6 +92,7 @@ return {
       gitsigns.setup {
         on_attach = function(bufnr)
           vim.keymap.set({ "n", "x" }, "<leader>ghr", gitsigns.reset_hunk, { buffer = bufnr })
+          vim.keymap.set({ "n", "x" }, "<leader>gbr", gitsigns.reset_buffer, { buffer = bufnr })
 
           -- Navigation
           vim.keymap.set('n', ']c', function()
