@@ -50,3 +50,11 @@ source (dirname (status -f))/(hostname).config.fish 2>/dev/null
 
 # Created by `pipx` on 2023-08-04 07:01:10
 set PATH $PATH /Users/cjtapper/.local/bin
+
+# Shift venv to the front of the path (if it was already activated). This is
+# helpful in e.g. neovim, which spawns subshells.
+if test -n $VIRTUAL_ENV
+  while set venv_index (contains -i -- $VIRTUAL_ENV/bin $PATH)
+  set -eg PATH[$venv_index]; end; set -e venv_index
+  set -gx PATH $VIRTUAL_ENV/bin $PATH
+end
