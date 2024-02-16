@@ -34,9 +34,9 @@ return {
           pylsp = {
             -- configurationSources = {'flake8'},
             plugins = {
-              black = { enabled = true },
-              flake8 = { enabled = true },
-              isort = { enabled = true },
+              black = { enabled = false },
+              flake8 = { enabled = false },
+              isort = { enabled = false },
               rope_autoimport = { enabled = true },
               mccabe = { enabled = false },
               pyflakes = { enabled = false },
@@ -80,7 +80,7 @@ return {
           vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
           vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
           vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-          vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
+          vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format({ timeout_ms = 3000 }) end, opts)
 
           -- Highlight current variable and usages on CursorHold
           if client.server_capabilities.documentHighlightProvider then

@@ -123,4 +123,17 @@ return {
     "slim-template/vim-slim",
     ft = { "slim" },
   },
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local none_ls = require("null-ls")
+      none_ls.setup({
+        sources = {
+          none_ls.builtins.formatting.black,
+          none_ls.builtins.formatting.isort,
+          none_ls.builtins.diagnostics.flake8,
+        },
+      })
+    end
+  }
 }
