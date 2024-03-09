@@ -52,6 +52,8 @@ return {
         }
       })
 
+      lspconfig.tsserver.setup({})
+
       vim.fn.sign_define({
         { name = 'error', text = 'E', hl = 'DiagnosticSignError', numhl = nil },
         { name = 'hint',  text = 'H', hl = 'DiagnosticSignHint',  numhl = nil },

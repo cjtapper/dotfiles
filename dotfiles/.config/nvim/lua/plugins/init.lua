@@ -131,7 +131,9 @@ return {
         sources = {
           none_ls.builtins.formatting.black,
           none_ls.builtins.formatting.isort,
+          none_ls.builtins.formatting.ruff,
           none_ls.builtins.diagnostics.flake8,
+          none_ls.builtins.diagnostics.ruff,
         },
       })
     end
