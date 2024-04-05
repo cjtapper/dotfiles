@@ -9,6 +9,10 @@
   co = checkout
   st = status
   aa = add --all
+  switch-recent = !git branch --sort=-committerdate --format='%(refname:short)' | fzf --preview='git log --date=relative --color main..{}'| xargs git switch
+
+[branch]
+  sort = -committerdate
 
 [core]
   pager = delta

@@ -4,13 +4,13 @@ return {
   dependencies = {
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
-    {'L3MON4D3/LuaSnip'},
+    { 'L3MON4D3/LuaSnip' },
   },
   config = function()
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
     local cmp = require('cmp')
-    local cmp_select_behavior = {behavior = cmp.SelectBehavior.Select}
+    local cmp_select_behavior = { behavior = cmp.SelectBehavior.Select }
     local cmp_mappings = {
       ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select_behavior),
       ['<C-n>'] = cmp.mapping.select_next_item(cmp_select_behavior),
@@ -22,6 +22,7 @@ return {
 
     cmp.setup({
       sources = cmp.config.sources({
+        { name = "copilot" },
         { name = "nvim_lsp" },
         {
           name = "buffer",
