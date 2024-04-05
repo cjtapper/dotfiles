@@ -188,12 +188,12 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec -10 # decrease screen brightn
 # screenshot
 bindsym $mod+Print exec --no-startup-id flameshot gui
 
-bindsym $mod+x exec --no-startup-id "xmodmap ~/.config/Xmodmap; notify-send 'xmodmap ~/.config/Xmodmap'"
+# bindsym $mod+x exec --no-startup-id "xmodmap ~/.config/Xmodmap; notify-send 'xmodmap ~/.config/Xmodmap'"
 bindsym XF86Display exec --no-startup-id "~/.bin/screen_picker.sh"
 bindsym $mod+m exec "playerctl play-pause"
 
 exec --no-startup-id xrdb -merge ~/.config/Xresources
-exec --no-startup-id xmodmap ~/.config/Xmodmap
+# exec --no-startup-id xmodmap ~/.config/Xmodmap
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id autokey-gtk
