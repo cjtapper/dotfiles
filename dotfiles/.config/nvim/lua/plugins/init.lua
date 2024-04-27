@@ -40,15 +40,6 @@ return {
     },
   },
   {
-    'Wansmer/treesj',
-    dependencies = { 'nvim-treesitter' },
-    opts = { use_default_keymaps = false },
-    config = function()
-      local treesj = require('treesj')
-      vim.keymap.set("n", "<leader>jj", treesj.toggle)
-    end
-  },
-  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = true,
@@ -59,9 +50,11 @@ return {
     lazy = false,
   },
   {
-    "windwp/nvim-autopairs",
+    'echasnovski/mini.pairs',
+    version = '*',
     config = true,
   },
+  { 'echasnovski/mini.splitjoin', version = '*', config = true },
   {
     "vim-test/vim-test",
     config = function()
