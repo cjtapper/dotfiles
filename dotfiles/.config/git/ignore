@@ -1,6 +1,7 @@
+.DS_Store
 .envrc
 .irb_history
 .ropeproject
-.DS_Store
+.tool-versions
 logfile
 tags
