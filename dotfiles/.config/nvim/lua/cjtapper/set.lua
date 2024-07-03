@@ -4,6 +4,7 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.opt.termguicolors = true
 
 vim.opt.guicursor = ""
+vim.opt.showmode = false
 
 vim.opt.autoindent = true
 vim.opt.expandtab = true
