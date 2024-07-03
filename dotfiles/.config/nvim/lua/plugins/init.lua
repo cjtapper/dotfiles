@@ -16,10 +16,6 @@ return {
     end
   },
   {
-    'numToStr/Comment.nvim',
-    opts = {},
-  },
-  {
     "tummetott/reticle.nvim",
     opts = {
       on_startup = {
