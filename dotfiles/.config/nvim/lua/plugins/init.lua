@@ -82,6 +82,7 @@ return {
         on_attach = function(bufnr)
           vim.keymap.set({ "n", "x" }, "<leader>ghr", gitsigns.reset_hunk, { buffer = bufnr })
           vim.keymap.set({ "n", "x" }, "<leader>gbr", gitsigns.reset_buffer, { buffer = bufnr })
+          vim.keymap.set({ "n", "x" }, "<leader>gb", gitsigns.blame, { buffer = bufnr })
 
           -- Navigation
           vim.keymap.set('n', ']c', function()
@@ -101,12 +102,6 @@ return {
   },
   "alvan/vim-closetag",
   "raimon49/requirements.txt.vim",
-  {
-    "tpope/vim-fugitive",
-    config = function()
-      vim.keymap.set("n", "<leader>gb", ":Git blame<cr>")
-    end
-  },
   "tpope/vim-unimpaired",
   {
     "slim-template/vim-slim",
