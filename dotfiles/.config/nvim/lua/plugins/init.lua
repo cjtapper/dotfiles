@@ -114,15 +114,19 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+    },
     config = function()
       local none_ls = require("null-ls")
       none_ls.setup({
         sources = {
+          require("none-ls.diagnostics.flake8"),
+          -- TODO: use ruff lsp instead of none ls
+          require("none-ls.diagnostics.ruff"),
+          require("none-ls.formatting.ruff_format"),
           none_ls.builtins.formatting.black,
           none_ls.builtins.formatting.isort,
-          none_ls.builtins.formatting.ruff,
-          none_ls.builtins.diagnostics.flake8,
-          none_ls.builtins.diagnostics.ruff,
         },
       })
     end
