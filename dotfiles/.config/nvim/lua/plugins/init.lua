@@ -41,11 +41,6 @@ return {
     config = true,
   },
   {
-    "aserowy/tmux.nvim",
-    config = true,
-    lazy = false,
-  },
-  {
     'echasnovski/mini.pairs',
     version = '*',
     config = true,
@@ -57,7 +52,6 @@ return {
       vim.g["test#python#pytest#file_pattern"] = [[\v(test_[^/]+|[^/]+_test|tests)\.py$]]
       vim.g["test#python#runner"] = 'pytest'
       vim.g["test#python#pytest#options"] = {
-        all = '--reuse-db',
         nearest = '-p no:warnings',
       }
       vim.g["test#strategy"] = "neovim"
@@ -66,13 +60,6 @@ return {
       vim.api.nvim_set_keymap('n', '<leader>ts', ':TestSuite<CR>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<leader>tl', ':TestLast<CR>', { noremap = true })
     end
-  },
-  { -- Optional
-    'williamboman/mason.nvim',
-    build = function()
-      pcall(vim.cmd, 'MasonUpdate')
-    end,
-    config = true
   },
   {
     'lewis6991/gitsigns.nvim',
