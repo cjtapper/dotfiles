@@ -3,14 +3,12 @@
 # Disable the greeting
 set fish_greeting
 
-fish_config theme choose "Dracula"
-
 set -gx EDITOR nvim
 set -gx LANG en_AU.UTF-8
 set -gx STARSHIP_LOG error
 
 # Dracula theme for FZF
-set -gx FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+# set -gx FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 
 
 if status --is-interactive;
@@ -41,6 +39,9 @@ abbr --add -- pt pytest
 abbr --add -- v $EDITOR
 abbr --add -- tf terraform
 abbr --add -- mk make
+
+alias ls eza
+alias fd fdfind
 
 function vim --wraps=nvim --description 'alias vim nvim'
     nvim $argv

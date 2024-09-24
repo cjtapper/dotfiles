@@ -46,6 +46,9 @@ return {
         }
       })
 
+      lspconfig.ruff.setup({
+      })
+
       lspconfig.solargraph.setup({
         settings = {
           diagnostics = false,

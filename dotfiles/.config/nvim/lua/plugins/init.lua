@@ -1,18 +1,14 @@
 return {
   {
-    'Mofiqul/dracula.nvim',
+    'sainnhe/everforest',
     lazy = false,
     priority = 1000,
     config = function()
-      local dracula = require('dracula')
-      local colors = dracula.colors()
-
-      dracula.setup({
-        overrides = {
-          ColorColumn = { bg = colors.menu },
-        }
-      })
-      vim.cmd.colorscheme('dracula')
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.everforest_enable_italic = true
+      vim.g.everforest_background = 'hard'
+      vim.cmd.colorscheme('everforest')
     end
   },
   {
@@ -112,24 +108,5 @@ return {
         },
       })
     end
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    command = "Copilot",
-    event = { "InsertEnter" },
-    opts = {
-      panel = {
-        enabled = false,
-      },
-      suggestion = {
-        enabled = false,
-      },
-    },
   },
 }
