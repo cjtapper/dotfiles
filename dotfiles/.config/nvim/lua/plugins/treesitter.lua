@@ -3,10 +3,11 @@ return {
   build = ':TSUpdate',
   lazy = false,
   dependencies = {
-    'RRethy/nvim-treesitter-endwise'
+    "RRethy/nvim-treesitter-endwise",
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
   config = function()
-    require'nvim-treesitter.configs'.setup {
+    require 'nvim-treesitter.configs'.setup {
       ensure_installed = {
         "c",
         "javascript",

@@ -37,6 +37,23 @@ return {
     config = true,
   },
   {
+    'echasnovski/mini.ai',
+    version = '*',
+    config = function()
+      local spec_treesitter = require('mini.ai').gen_spec.treesitter
+      require('mini.ai').setup({
+        custom_textobjects = {
+          c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
+          f = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
+          o = spec_treesitter({
+            a = { '@conditional.outer', '@contextmanager.outer', '@loop.outer' },
+            i = { '@conditional.inner', '@contextmanager.inner', '@loop.inner' },
+          }),
+        }
+      })
+    end,
+  },
+  {
     'echasnovski/mini.pairs',
     version = '*',
     config = true,
@@ -87,10 +104,6 @@ return {
   "raimon49/requirements.txt.vim",
   "tpope/vim-unimpaired",
   {
-    "slim-template/vim-slim",
-    ft = { "slim" },
-  },
-  {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
@@ -101,10 +114,10 @@ return {
         sources = {
           require("none-ls.diagnostics.flake8"),
           -- TODO: use ruff lsp instead of none ls
-          require("none-ls.diagnostics.ruff"),
-          require("none-ls.formatting.ruff_format"),
-          none_ls.builtins.formatting.black,
+          -- require("none-ls.diagnostics.ruff"),
+          -- require("none-ls.formatting.ruff_format"),
           none_ls.builtins.formatting.isort,
+          none_ls.builtins.formatting.black,
         },
       })
     end

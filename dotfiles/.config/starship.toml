@@ -5,3 +5,6 @@ fish_style_pwd_dir_length = 1
 repo_root_style = "bold green"
 truncate_to_repo = true
 use_logical_path = false
+
+[package]
+disabled = true

@@ -42,6 +42,8 @@ abbr --add -- mk make
 
 alias ls eza
 alias fd fdfind
+alias cat batcat
+alias bat batcat
 
 function vim --wraps=nvim --description 'alias vim nvim'
     nvim $argv
@@ -60,3 +62,8 @@ if test -n $VIRTUAL_ENV
   set -eg PATH[$venv_index]; end; set -e venv_index
   set -gx PATH $VIRTUAL_ENV/bin $PATH
 end
+uv generate-shell-completion fish | source
+
+# uv
+fish_add_path "/home/cjtapper/.local/bin"
+/home/cjtapper/.local/bin/mise activate fish | source
