@@ -39,6 +39,59 @@ return {
   },
   { 'echasnovski/mini.bracketed', version = '*', config = true },
   {
+    'echasnovski/mini.clue',
+    version = '*',
+    config = function()
+      local miniclue = require('mini.clue')
+      miniclue.setup({
+        triggers = {
+          { mode = 'n', keys = '<Leader>' },
+          { mode = 'x', keys = '<Leader>' },
+          { mode = 'n', keys = '<space>' },
+          { mode = 'x', keys = '<space>' },
+
+          -- Built-in completion
+          { mode = 'i', keys = '<C-x>' },
+
+          -- `g` key
+          { mode = 'n', keys = 'g' },
+          { mode = 'x', keys = 'g' },
+
+          -- Marks
+          { mode = 'n', keys = "'" },
+          { mode = 'n', keys = '`' },
+          { mode = 'x', keys = "'" },
+          { mode = 'x', keys = '`' },
+
+          -- Registers
+          { mode = 'n', keys = '"' },
+          { mode = 'x', keys = '"' },
+          { mode = 'i', keys = '<C-r>' },
+          { mode = 'c', keys = '<C-r>' },
+
+          -- Window commands
+          { mode = 'n', keys = '<C-w>' },
+
+          -- `z` key
+          { mode = 'n', keys = 'z' },
+          { mode = 'x', keys = 'z' },
+
+          -- Bracketed
+          { mode = 'n', keys = '[' },
+          { mode = 'n', keys = ']' },
+        },
+        clues = {
+          miniclue.gen_clues.builtin_completion(),
+          miniclue.gen_clues.g(),
+          miniclue.gen_clues.marks(),
+          miniclue.gen_clues.registers(),
+          miniclue.gen_clues.windows(),
+          miniclue.gen_clues.z(),
+        },
+      })
+    end
+  },
+  {
     'echasnovski/mini.indentscope',
     version = '*',
     config = function()
@@ -83,13 +136,13 @@ return {
             if vim.wo.diff then return ']h' end
             vim.schedule(function() gitsigns.next_hunk() end)
             return '<Ignore>'
-          end, { expr = true, buffer = bufnr })
+          end, { expr = true, buffer = bufnr, desc = "Hunk forward" })
 
           vim.keymap.set('n', '[h', function()
             if vim.wo.diff then return '[h' end
             vim.schedule(function() gitsigns.prev_hunk() end)
             return '<Ignore>'
-          end, { expr = true, buffer = bufnr })
+          end, { expr = true, buffer = bufnr, desc = "Hunk backward" })
         end
       }
     end
