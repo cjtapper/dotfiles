@@ -21,22 +21,6 @@ return {
     }
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {
-      scope = {
-        enabled = true,
-        show_start = false,
-        show_end = false,
-      },
-    },
-  },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = true,
-  },
-  {
     'echasnovski/mini.ai',
     version = '*',
     config = function()
@@ -53,12 +37,22 @@ return {
       })
     end,
   },
+  { 'echasnovski/mini.bracketed', version = '*', config = true },
   {
-    'echasnovski/mini.pairs',
+    'echasnovski/mini.indentscope',
     version = '*',
-    config = true,
+    config = function()
+      local indentscope = require('mini.indentscope')
+      indentscope.setup({
+        draw = {
+          animation = require('mini.indentscope').gen_animation.none(),
+        },
+      })
+    end
   },
+  { 'echasnovski/mini.pairs',     version = '*', config = true },
   { 'echasnovski/mini.splitjoin', version = '*', config = true },
+  { 'echasnovski/mini.surround',  version = '*', config = true },
   {
     "vim-test/vim-test",
     config = function()
@@ -85,14 +79,14 @@ return {
           vim.keymap.set({ "n", "x" }, "<leader>gb", gitsigns.blame, { buffer = bufnr })
 
           -- Navigation
-          vim.keymap.set('n', ']c', function()
-            if vim.wo.diff then return ']c' end
+          vim.keymap.set('n', ']h', function()
+            if vim.wo.diff then return ']h' end
             vim.schedule(function() gitsigns.next_hunk() end)
             return '<Ignore>'
           end, { expr = true, buffer = bufnr })
 
-          vim.keymap.set('n', '[c', function()
-            if vim.wo.diff then return '[c' end
+          vim.keymap.set('n', '[h', function()
+            if vim.wo.diff then return '[h' end
             vim.schedule(function() gitsigns.prev_hunk() end)
             return '<Ignore>'
           end, { expr = true, buffer = bufnr })
@@ -102,7 +96,6 @@ return {
   },
   "alvan/vim-closetag",
   "raimon49/requirements.txt.vim",
-  "tpope/vim-unimpaired",
   {
     "nvimtools/none-ls.nvim",
     dependencies = {

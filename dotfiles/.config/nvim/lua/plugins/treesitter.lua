@@ -42,6 +42,17 @@ return {
       endwise = {
         enable = true,
       },
+      -- Apparently these are Helix style keybindings. I'll try them out and see
+      -- what I think.
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<M-o>",
+          scope_incremental = "<M-O>",
+          node_incremental = "<M-o>",
+          node_decremental = "<M-i>",
+        },
+      },
     }
   end
 }
