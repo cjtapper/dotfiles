@@ -28,7 +28,7 @@ return {
       require('mini.ai').setup({
         custom_textobjects = {
           c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
-          f = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
+          m = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
           o = spec_treesitter({
             a = { '@conditional.outer', '@contextmanager.outer', '@loop.outer' },
             i = { '@conditional.inner', '@contextmanager.inner', '@loop.inner' },
@@ -37,7 +37,13 @@ return {
       })
     end,
   },
-  { 'echasnovski/mini.bracketed', version = '*', config = true },
+  {
+    'echasnovski/mini.bracketed',
+    version = '*',
+    config = {
+      comment = { suffix = '' } -- disable in favour of my treesitter version
+    },
+  },
   {
     'echasnovski/mini.clue',
     version = '*',
@@ -100,6 +106,7 @@ return {
         draw = {
           animation = require('mini.indentscope').gen_animation.none(),
         },
+        symbol = "│",
       })
     end
   },

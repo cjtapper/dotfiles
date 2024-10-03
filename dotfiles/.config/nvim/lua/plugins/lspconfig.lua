@@ -100,15 +100,12 @@ return {
           local opts = { buffer = bufnr, remap = false }
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-          vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-          vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-          vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-          vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-          vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-          vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-          vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-          vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-          vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format({ timeout_ms = 3000 }) end, opts)
+          vim.keymap.set("n", "gD",       function() vim.lsp.buf.declaration() end, opts)
+          vim.keymap.set("n", "gd",       function() vim.lsp.buf.definition() end, opts)
+          vim.keymap.set("n", "<M-k>",    function() vim.lsp.buf.signature_help() end, opts)
+          vim.keymap.set("i", "<M-k>",    function() vim.lsp.buf.signature_help() end, opts)
+          vim.keymap.set("n", "<space>a", function() vim.lsp.buf.code_action() end, opts)
+          vim.keymap.set("n", "<space>r", function() vim.lsp.buf.rename() end, opts)
 
           -- Highlight current variable and usages on CursorHold
           if client.server_capabilities.documentHighlightProvider then

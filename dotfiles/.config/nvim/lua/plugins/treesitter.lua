@@ -53,6 +53,30 @@ return {
           node_decremental = "<M-i>",
         },
       },
+      textobjects = {
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["]c"] = { query = { "@comment", "@docstring" }, desc = "Comment forward" },
+            ["]m"] = { query = "@function.outer", desc = "Function forward" },
+            ["]]"] = { query = "@class.outer", desc = "Class forward" },
+          },
+          goto_next_end = {
+            ["]M"] = { query = "@function.outer", desc = "Function forward end" },
+            ["]["] = { query = "@class.outer", desc = "Class forward end" },
+          },
+          goto_previous_start = {
+            ["[c"] = { query = { "@comment", "@docstring" }, desc = "Comment backward" },
+            ["[m"] = { query = "@function.outer", desc = "Function backward" },
+            ["[["] = { query = "@class.outer", desc = "Class backward" },
+          },
+          goto_previous_end = {
+            ["[M"] = { query = "@function.outer", desc = "Function backward end" },
+            ["[]"] = { query = "@class.outer", desc = "Class backward end" },
+          },
+        },
+      },
     }
   end
 }
