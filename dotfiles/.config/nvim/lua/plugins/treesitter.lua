@@ -3,8 +3,8 @@ return {
   build = ':TSUpdate',
   lazy = false,
   dependencies = {
-    "RRethy/nvim-treesitter-endwise",
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "RRethy/nvim-treesitter-endwise",
   },
   config = function()
     require 'nvim-treesitter.configs'.setup {

@@ -134,8 +134,8 @@ return {
       local gitsigns = require("gitsigns")
       gitsigns.setup {
         on_attach = function(bufnr)
-          vim.keymap.set({ "n", "x" }, "<leader>ghr", gitsigns.reset_hunk, { buffer = bufnr })
-          vim.keymap.set({ "n", "x" }, "<leader>gbr", gitsigns.reset_buffer, { buffer = bufnr })
+          vim.keymap.set({ "n", "x" }, "<leader>grh", gitsigns.reset_hunk, { buffer = bufnr })
+          vim.keymap.set({ "n", "x" }, "<leader>grb", gitsigns.reset_buffer, { buffer = bufnr })
           vim.keymap.set({ "n", "x" }, "<leader>gb", gitsigns.blame, { buffer = bufnr })
 
           -- Navigation
@@ -154,7 +154,6 @@ return {
       }
     end
   },
-  "alvan/vim-closetag",
   "raimon49/requirements.txt.vim",
   {
     "nvimtools/none-ls.nvim",
@@ -175,4 +174,8 @@ return {
       })
     end
   },
+  {
+    "windwp/nvim-ts-autotag",
+    config = true,
+  }
 }
