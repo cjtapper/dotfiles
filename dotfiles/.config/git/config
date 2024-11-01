@@ -9,8 +9,10 @@
   co = checkout
   st = status
   aa = add --all
+  primary = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+  switch-main = !git switch $(git primary) && git pull
   switch-recent = !git branch --sort=-committerdate --format='%(refname:short)' | fzf --preview='git log --date=relative --color $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')..{}'| xargs git switch
-  rm-merged = !git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D
+  rm-merged = "!git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D"
 
 [branch]
   sort = -committerdate
@@ -37,6 +39,7 @@
 
 [delta]
   navigate = true
+  syntax-theme = ansi
 
 [diff]
   algorithm = histogram
@@ -53,6 +56,7 @@
 
 [interactive]
   diffFilter = delta --color-only
+  singleKey = true
 
 [merge]
   autoStash = true
@@ -66,3 +70,7 @@
 
 [rebase]
   autoStash = true
+  updateRefs = true
+
+[status]
+  showStash = true
