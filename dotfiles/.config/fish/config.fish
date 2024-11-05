@@ -1,17 +1,22 @@
 #!/usr/bin/env fish
 
-# Disable the greeting
-set fish_greeting
+set fish_greeting # Disable the greeting
+
+fish_config theme choose ansi
 
 set -gx EDITOR nvim
 set -gx LANG en_AU.UTF-8
 set -gx STARSHIP_LOG error
+
+fish_add_path "/home/cjtapper/.local/bin"
+fish_add_path "/home/cjtapper/.nix-profile/bin"
 
 if status --is-interactive;
     starship init fish | source
 end
 direnv hook fish | source
 zoxide init fish | source
+mise activate fish | source
 
 function fish_user_key_bindings
     # Make Ctrl-z return last suspended job to the foreground
@@ -30,20 +35,17 @@ abbr --add -- gsm git switch-main
 abbr --add -- gsr git switch-recent
 abbr --add -- gs- git switch -
 
+abbr --add -- mk make
 abbr --add -- pip python -m pip
 abbr --add -- pt pytest
-abbr --add -- v $EDITOR
 abbr --add -- tf terraform
-abbr --add -- mk make
+abbr --add -- v $EDITOR
 
-alias ls eza
-alias fd fdfind
-alias cat batcat
 alias bat batcat
+alias cat batcat
+alias fd fdfind
+alias ls eza
 alias vim nvim
-
-# Load machine specific config
-source (dirname (status -f))/(hostname).config.fish 2>/dev/null
 
 # Shift venv to the front of the path (if it was already activated). This is
 # helpful in e.g. neovim, which spawns subshells.
@@ -58,14 +60,6 @@ end
 
 # uv
 uv generate-shell-completion fish | source
-fish_add_path "/home/cjtapper/.local/bin"
 
-/home/cjtapper/.local/bin/mise activate fish | source
-
-set fish_function_path $fish_function_path ~/repos/plugin-foreign-env/functions
-
-fish_add_path "/home/cjtapper/.nix-profile/bin"
-
-# This must be sourced in your .bashrc or whatever shell you're using.
-# In the future we can get home-manager to do this for us, but bootstrapping for now...
-fenv source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+# Load machine specific config
+source (dirname (status -f))/(hostname).config.fish 2>/dev/null
