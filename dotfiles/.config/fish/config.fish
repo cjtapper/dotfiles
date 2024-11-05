@@ -22,6 +22,7 @@ abbr --add -- g git
 abbr --add -- gaa git add --all
 abbr --add -- gau git add --update
 abbr --add --set-cursor -- gcm git commit --message \"%\"
+abbr --add -- gca git commit --amend --noedit
 abbr --add -- gds git diff --staged
 abbr --add --set-cursor -- gsc git switch --create \"cjtapper/%\"
 abbr --add -- gr. git restore .
@@ -60,3 +61,11 @@ uv generate-shell-completion fish | source
 fish_add_path "/home/cjtapper/.local/bin"
 
 /home/cjtapper/.local/bin/mise activate fish | source
+
+set fish_function_path $fish_function_path ~/repos/plugin-foreign-env/functions
+
+fish_add_path "/home/cjtapper/.nix-profile/bin"
+
+# This must be sourced in your .bashrc or whatever shell you're using.
+# In the future we can get home-manager to do this for us, but bootstrapping for now...
+fenv source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
