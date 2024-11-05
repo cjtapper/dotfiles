@@ -38,8 +38,31 @@ vim.opt.formatoptions = { "c", "q" }
 
 vim.opt.updatetime = 500 -- For CursorHold events
 
+vim.opt.laststatus = 2
+vim.opt.showmatch = true
+vim.opt.ruler = true
+vim.opt.colorcolumn = { 80 }
+
+vim.opt.scrolloff = 10
+
+-- Incremental search with highlighting
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.smartcase = true
+
+vim.opt.cursorline = true
+
+vim.opt.signcolumn = "yes"
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+
+vim.g.python3_host_prog = "/home/cjtapper/.local/share/nvim/venv/bin/python"
+
 -- Trailing whitespace listchars. Hide in insert mode
-local trailingWhitespaceListchars = vim.api.nvim_create_augroup(
+local trailingWhitespaceListchars = augroup(
   'trailingWhitespaceListchars', { clear = true }
 )
 autocmd("InsertEnter", {
@@ -52,9 +75,7 @@ autocmd("InsertLeave", {
 })
 
 -- Return to the same line when you reopen a file
-local lineReturn = vim.api.nvim_create_augroup(
-  'lineReturn', { clear = true }
-)
+local lineReturn = augroup('lineReturn', { clear = true })
 autocmd(
   "BufReadPost",
   {
@@ -80,29 +101,6 @@ autocmd('TextYankPost', {
     })
   end,
 })
-
-vim.opt.laststatus = 2
-vim.opt.showmatch = true
-vim.opt.ruler = true
-vim.opt.colorcolumn = { 80 }
-
-vim.opt.scrolloff = 10
-
--- Incremental search with highlighting
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.incsearch = true
-vim.opt.smartcase = true
-
-vim.opt.cursorline = true
-
-vim.opt.signcolumn = "yes"
-
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-
-vim.g.python3_host_prog = "/home/cjtapper/.local/share/nvim/venv/bin/python"
 
 vim.filetype.add({
   pattern = {
