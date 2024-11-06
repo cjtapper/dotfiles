@@ -61,9 +61,6 @@ end
 # uv
 uv generate-shell-completion fish | source
 
-# Load machine specific config
-source (dirname (status -f))/(hostname).config.fish 2>/dev/null
-
 # Custom path for fisher plugins
 set fisher_path $__fish_user_data_dir/fisher
 
