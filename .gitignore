@@ -1,9 +1,4 @@
-dotfiles/.config/fish/completions
-dotfiles/.config/fish/conf.d
 dotfiles/.config/fish/fish_variables
-dotfiles/.config/fish/functions/__*
-dotfiles/.config/fish/functions/bass.fish
-dotfiles/.config/fish/themes/
 dotfiles/.config/gh/hosts.yml
 dotfiles/.config/git/personal
 dotfiles/.config/git/work
