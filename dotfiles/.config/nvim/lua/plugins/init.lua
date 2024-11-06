@@ -96,6 +96,14 @@ return {
     end
   },
   {
+    'echasnovski/mini.icons',
+    version = '*',
+    config = function()
+      require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
+    end
+  },
+  {
     'echasnovski/mini.indentscope',
     version = '*',
     config = function()
