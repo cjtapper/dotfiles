@@ -1,3 +1,6 @@
+[font.normal]
+family = "Berkeley Mono"
+
 [window]
 decorations = "None"
 padding.x = 16
