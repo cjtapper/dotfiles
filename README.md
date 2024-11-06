@@ -19,7 +19,7 @@ highlighting (and more).
 - [`eza`](https://github.com/eza-community/eza) - a modern alternative to `ls`
 - [`fish`](https://fishshell.com/) - I just prefer the UX over `bash` and `zsh`
   (and all the other alternatives)
-    -[`fisher`](https://github.com/jorgebucaran/fisher) as plugin manager
+    - [`fisher`](https://github.com/jorgebucaran/fisher) as plugin manager
 - [`fd`](https://github.com/sharkdp/fd) - fast alternative to `find` with better
   UX.
 - [`neovim`](https://neovim.io/)
