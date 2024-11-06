@@ -44,7 +44,7 @@ abbr --add -- v $EDITOR
 alias bat batcat
 alias cat batcat
 alias fd fdfind
-alias ls eza
+alias ls "eza --group-directories-first --icons"
 alias vim nvim
 
 # Shift venv to the front of the path (if it was already activated). This is
