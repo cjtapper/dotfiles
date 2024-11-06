@@ -1,7 +1,7 @@
 .PHONY: install
 install:
 	stow dotfiles -t ~
-	fisher update
+	fish -c "fisher update"
 
 .PHONY: uninstall
 uninstall:
