@@ -290,19 +290,6 @@ pane_frames false
 // For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 themes {
-    everforest-dark {
-        bg "#272e33"
-        fg "#d3c6aa"
-        black "#4b565c"
-        red "#e67e80"
-        green "#a7c080"
-        yellow "#dbbc7f"
-        blue "#7fbbb3"
-        magenta "#d699b6"
-        cyan "#83c092"
-        white "#d3c6aa"
-        orange "#e69875"
-    }
 }
 
 // Choose the theme that is specified in the themes section.
