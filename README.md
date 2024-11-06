@@ -6,6 +6,11 @@ Right now I'm running Linux Mint and just using the default Cinnamon window
 manager, though I have used `i3` extensively in the past. Most, if not all, of
 the configuration here should be platform agnostic.
 
+## Dependencies
+- [GNU Stow](https://www.gnu.org/software/stow/) to symlink the dotfiles and
+scripts into the user's home directory
+- See [Tools](#tools) section for everything else
+
 ## Setup
 ```
 $ make install
@@ -31,8 +36,3 @@ to `grep` for faster searching
 changing.
 - [`zellij`](https://zellij.dev/) - modern alternative to `tmux` with (IMO)
 easier to grok keybindings and modes.
-
-## Dependencies
-- [GNU Stow](https://www.gnu.org/software/stow/) to symlink the dotfiles and
-scripts into the user's home directory
-- See [Tools](#tools) section for everything else
