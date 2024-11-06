@@ -4,7 +4,7 @@ padding.x = 16
 padding.y = 14
 
 # Colors (Everforest Dark)
-# https://github.com/alacritty/alacritty-theme/blob/master/themes/everforest_light.toml
+# https://github.com/alacritty/alacritty-theme/blob/master/themes/everforest_dark.toml
 # (with hard background contrast tweaks by me.)
 
 # Default colors
