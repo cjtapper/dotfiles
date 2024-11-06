@@ -5,13 +5,6 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'williamboman/mason-lspconfig.nvim' },
-      {
-        'williamboman/mason.nvim',
-        build = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
     },
     config = function()
       local lspconfig = require('lspconfig')
@@ -73,12 +66,6 @@ return {
 
       -- lspconfig.ruff.setup({
       -- })
-
-      lspconfig.solargraph.setup({
-        settings = {
-          diagnostics = false,
-        }
-      })
 
       lspconfig.ts_ls.setup({})
 
