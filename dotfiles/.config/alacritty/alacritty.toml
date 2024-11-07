@@ -5,9 +5,8 @@ size = 12
 family = "BerkeleyMono Nerd Font"
 
 [window]
-decorations = "None"
-padding.x = 16
-padding.y = 14
+padding.x = 8
+padding.y = 8
 
 # Colors (Everforest Dark)
 # https://github.com/alacritty/alacritty-theme/blob/master/themes/everforest_dark.toml
