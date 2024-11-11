@@ -6,6 +6,8 @@ vim.keymap.set("n", "<leader>fs", vim.cmd.Ex)
 -- Sanely handle line navigation for long lines
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
+vim.keymap.set("n", "<Down>", "g<Down>")
+vim.keymap.set("n", "<Up>", "g<Up>")
 
 -- Better switching between windows.
 vim.keymap.set("n", "<C-h>", "<C-w>h")
