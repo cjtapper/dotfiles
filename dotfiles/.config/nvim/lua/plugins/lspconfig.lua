@@ -67,7 +67,12 @@ return {
       -- lspconfig.ruff.setup({
       -- })
 
-      lspconfig.ts_ls.setup({})
+      lspconfig.ts_ls.setup({
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end
+      })
 
       vim.fn.sign_define({
         { name = 'error', text = 'E', hl = 'DiagnosticSignError', numhl = nil },
@@ -85,7 +90,9 @@ return {
         callback = function(ev)
           local bufnr = ev.buf
           local opts = { buffer = bufnr, remap = false }
+
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if not client then return end
 
           vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
           vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -129,7 +136,7 @@ return {
               group = gid,
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ async = false })
+                vim.lsp.buf.format({ bufnr = bufnr, id = client.id, async = false })
               end,
             })
           end

@@ -47,6 +47,8 @@ alias fd fdfind
 alias ls "eza --group-directories-first --icons"
 alias vim nvim
 
+alias scw "zellij attach scw"
+
 # Shift venv to the front of the path (if it was already activated). This is
 # helpful in e.g. neovim, which spawns subshells.
 if test -n $VIRTUAL_ENV
