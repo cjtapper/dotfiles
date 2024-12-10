@@ -87,11 +87,11 @@ return {
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-          local bufnr = ev.buf
+        callback = function(event)
+          local bufnr = event.buf
           local opts = { buffer = bufnr, remap = false }
 
-          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
           if not client then return end
 
           vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
