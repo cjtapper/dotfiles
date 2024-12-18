@@ -136,7 +136,7 @@ return {
               group = gid,
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr, id = client.id, async = false })
+                vim.lsp.buf.format({ async = false })
               end,
             })
           end
