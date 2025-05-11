@@ -38,6 +38,7 @@ abbr --add -- gs- git switch -
 abbr --add -- mk make
 abbr --add -- pip python -m pip
 abbr --add -- pt pytest
+abbr --add -- ptlf pytest --lf
 abbr --add -- tf terraform
 abbr --add -- v $EDITOR
 

@@ -110,7 +110,7 @@ return {
       local indentscope = require('mini.indentscope')
       indentscope.setup({
         draw = {
-          animation = require('mini.indentscope').gen_animation.none(),
+          animation = indentscope.gen_animation.none(),
         },
         symbol = "│",
       })
@@ -183,5 +183,6 @@ return {
   {
     "windwp/nvim-ts-autotag",
     config = true,
-  }
+  },
+  "lbrayner/vim-rzip", -- Required for typescript-language-server to work - see https://yarnpkg.com/getting-started/editor-sdks#neovim-native-lsp
 }
