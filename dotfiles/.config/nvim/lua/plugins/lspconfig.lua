@@ -74,15 +74,8 @@ return {
         end
       })
 
-      vim.fn.sign_define({
-        { name = 'error', text = 'E', hl = 'DiagnosticSignError', numhl = nil },
-        { name = 'hint',  text = 'H', hl = 'DiagnosticSignHint',  numhl = nil },
-        { name = 'info',  text = 'I', hl = 'DiagnosticSignInfo',  numhl = nil },
-        { name = 'warn',  text = 'W', hl = 'DiagnosticSignWarn',  numhl = nil },
-      })
-
       vim.diagnostic.config({
-        virtual_text = true
+        virtual_text = true,
       })
 
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -94,13 +87,7 @@ return {
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if not client then return end
 
-          vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
           vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-          vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-          vim.keymap.set("n", "<M-k>", function() vim.lsp.buf.signature_help() end, opts)
-          vim.keymap.set("i", "<M-k>", function() vim.lsp.buf.signature_help() end, opts)
-          vim.keymap.set("n", "<space>a", function() vim.lsp.buf.code_action() end, opts)
-          vim.keymap.set("n", "<space>r", function() vim.lsp.buf.rename() end, opts)
 
           -- Highlight current variable and usages on CursorHold
           if client.server_capabilities.documentHighlightProvider then
