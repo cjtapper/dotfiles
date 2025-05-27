@@ -89,7 +89,7 @@ autocmd(
   }
 )
 
--- Hightlight yanked text
+-- Highlight yanked text
 local yank_group = augroup('HighlightYank', {})
 autocmd('TextYankPost', {
   group = yank_group,
@@ -106,4 +106,11 @@ vim.filetype.add({
   pattern = {
     ["%.envrc"] = 'sh',
   },
+})
+
+-- Check for file changes when returning to nvim (e.g. after Ctrl-Z)
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "VimResume" }, {
+  callback = function()
+    vim.cmd("checktime")
+  end,
 })

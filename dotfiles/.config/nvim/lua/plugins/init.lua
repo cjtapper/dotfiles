@@ -185,4 +185,8 @@ return {
     config = true,
   },
   "lbrayner/vim-rzip", -- Required for typescript-language-server to work - see https://yarnpkg.com/getting-started/editor-sdks#neovim-native-lsp
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    config=true,
+  },
 }
