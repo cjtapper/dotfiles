@@ -71,19 +71,6 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
-  {
-    key = 'o',
-    mods = 'LEADER',
-    action = wezterm.action.QuickSelectArgs {
-      -- label = 'open blah',
-      -- skip_action_on_paste = true, -- will want to enable this once it's
-      -- available...
-      action = wezterm.action_callback(function(window, pane)
-        local url = window:get_selection_text_for_pane(pane)
-        wezterm.open_with(url)
-      end),
-    },
-  },
 }
 
 -- Key tables
@@ -126,7 +113,5 @@ end)
 config.quick_select_patterns = {
   [[(?:[.\w\-@~]+)?(?:\/+[.\w\-@]+)+(?:[:]\d+)?]],
 }
-
-config.use_ime = false
 
 return config
