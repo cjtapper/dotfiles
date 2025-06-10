@@ -23,6 +23,24 @@ function fish_user_key_bindings
     bind \cz 'fg 2>/dev/null; commandline -f repaint'
 end
 
+function fix_nvim_arg
+  # Transforms strings like "hello.py:3" to "+3 hello.py"
+  string match --quiet --regex ^nvim -- (commandline --current-job); or return 1
+
+  set -l regex '([^\s:]+(?:\/[^\s:]+)*):(\d+)$'
+  set -l matches (string match --regex -- $regex -- $argv)
+
+  if test (count $matches) -gt 0
+    set filename $matches[2]
+    set line $matches[3]
+
+    echo "+$line $filename"
+  else
+    return 1
+  end
+end
+abbr -a nvim_line_num --position anywhere --regex '.+\.py:(\d+)' --function fix_nvim_arg
+
 abbr --add -- g git
 abbr --add -- gaa git add --all
 abbr --add -- gau git add --update
