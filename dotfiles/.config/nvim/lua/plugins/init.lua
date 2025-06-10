@@ -10,15 +10,6 @@ return {
     end
   },
   {
-    "tummetott/reticle.nvim",
-    opts = {
-      on_startup = {
-        cursorline = true,
-      },
-      disable_in_insert = false,
-    }
-  },
-  {
     'echasnovski/mini.ai',
     version = '*',
     config = function()
@@ -187,6 +178,6 @@ return {
   "lbrayner/vim-rzip", -- Required for typescript-language-server to work - see https://yarnpkg.com/getting-started/editor-sdks#neovim-native-lsp
   {
     "nvim-treesitter/nvim-treesitter-context",
-    config=true,
+    config = true,
   },
 }

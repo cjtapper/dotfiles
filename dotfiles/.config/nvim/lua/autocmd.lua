@@ -35,3 +35,18 @@ autocmd({ "FocusGained", "BufEnter", "VimResume" }, {
     vim.cmd("checktime")
   end,
 })
+
+-- Highlight cursorline only in the active window
+local cursorLine = augroup("CursorLine", { clear = true })
+autocmd({ "WinEnter", "BufEnter" }, {
+  group = cursorLine,
+  callback = function()
+    vim.wo.cursorline = true
+  end,
+})
+autocmd("WinLeave", {
+  group = cursorLine,
+  callback = function()
+    vim.wo.cursorline = false
+  end,
+})
