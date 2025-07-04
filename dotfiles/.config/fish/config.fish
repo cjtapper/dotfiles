@@ -53,20 +53,11 @@ abbr --add -- gsm git switch-main
 abbr --add -- gsr git switch-recent
 abbr --add -- gs- git switch -
 
-abbr --add -- mk make
 abbr --add -- pip python -m pip
 abbr --add -- pt pytest
-abbr --add -- ptlf pytest --lf
-abbr --add -- tf terraform
 abbr --add -- v $EDITOR
 
-alias bat batcat
-alias cat batcat
-alias fd fdfind
-alias ls "eza --group-directories-first --icons"
 alias vim nvim
-
-alias scw "zellij attach scw"
 
 # Shift venv to the front of the path (if it was already activated). This is
 # helpful in e.g. neovim, which spawns subshells.
