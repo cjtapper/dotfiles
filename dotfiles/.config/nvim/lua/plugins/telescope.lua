@@ -44,6 +44,7 @@ return {
     vim.keymap.set('n', '<C-/>', builtin.live_grep, {})
     vim.keymap.set('n', '<C-_>', builtin.live_grep, {})
     vim.keymap.set('n', '<C-b>', builtin.buffers, {})
+    vim.keymap.set('n', 'grr', builtin.lsp_references, {})
     vim.keymap.set('n', '<leader>s', builtin.treesitter, {})
     vim.keymap.set('n', '<leader>*', builtin.grep_string, {})
   end

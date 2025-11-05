@@ -18,15 +18,9 @@ $ make install
 
 ## Tools
 I haven't automated installation of these yet, but you get the idea.
-- [`alacritty`](https://alacritty.org/) for my fast and simple terminal emulator
-- [`bat`](https://github.com/sharkdp/bat) as a `cat` alternative with syntax
-highlighting (and more).
-- [`eza`](https://github.com/eza-community/eza) - a modern alternative to `ls`
 - [`fish`](https://fishshell.com/) - I just prefer the UX over `bash` and `zsh`
   (and all the other alternatives)
     - [`fisher`](https://github.com/jorgebucaran/fisher) as plugin manager
-- [`fd`](https://github.com/sharkdp/fd) - fast alternative to `find` with better
-  UX.
 - [`neovim`](https://neovim.io/)
 - [`ripgrep`](https://github.com/BurntSushi/ripgrep) - blazing-fast alternative
 to `grep` for faster searching
@@ -34,5 +28,3 @@ to `grep` for faster searching
   sensible defaults.
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) for smarter `cd` directory
 changing.
-- [`zellij`](https://zellij.dev/) - modern alternative to `tmux` with (IMO)
-easier to grok keybindings and modes.

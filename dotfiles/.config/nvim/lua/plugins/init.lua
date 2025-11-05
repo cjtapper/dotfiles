@@ -10,7 +10,7 @@ return {
     end
   },
   {
-    'echasnovski/mini.ai',
+    'nvim-mini/mini.ai',
     version = '*',
     config = function()
       local spec_treesitter = require('mini.ai').gen_spec.treesitter
@@ -27,14 +27,14 @@ return {
     end,
   },
   {
-    'echasnovski/mini.bracketed',
+    'nvim-mini/mini.bracketed',
     version = '*',
     config = {
       comment = { suffix = '' } -- disable in favour of my treesitter version
     },
   },
   {
-    'echasnovski/mini.clue',
+    'nvim-mini/mini.clue',
     version = '*',
     config = function()
       local miniclue = require('mini.clue')
@@ -87,29 +87,16 @@ return {
     end
   },
   {
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
     version = '*',
     config = function()
       require('mini.icons').setup()
       MiniIcons.mock_nvim_web_devicons()
     end
   },
-  {
-    'echasnovski/mini.indentscope',
-    version = '*',
-    config = function()
-      local indentscope = require('mini.indentscope')
-      indentscope.setup({
-        draw = {
-          animation = indentscope.gen_animation.none(),
-        },
-        symbol = "│",
-      })
-    end
-  },
-  { 'echasnovski/mini.pairs',     version = '*', config = true },
-  { 'echasnovski/mini.splitjoin', version = '*', config = true },
-  { 'echasnovski/mini.surround',  version = '*', config = true },
+  { 'nvim-mini/mini.pairs',     version = '*', config = true },
+  { 'nvim-mini/mini.splitjoin', version = '*', config = true },
+  { 'nvim-mini/mini.surround',  version = '*', config = true },
   {
     "vim-test/vim-test",
     config = function()
@@ -151,7 +138,6 @@ return {
       }
     end
   },
-  "raimon49/requirements.txt.vim",
   {
     "nvimtools/none-ls.nvim",
     dependencies = {

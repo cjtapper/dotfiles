@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Get MPD status
+status=$(mpc status %state%)
+
+# Get current song (may be empty if stopped)
+current=$(mpc current)
+
+# Choose emoji based on status
+case "$status" in
+  "playing")
+    emoji="󰝚"
+    ;;
+  "paused")
+    emoji="󰏤"
+    ;;
+  *)
+    emoji="󰐎"
+    ;;
+esac
+
+# Output
+if [[ -n "$current" ]]; then
+  echo "$emoji $current"
+else
+  echo "$emoji"
+fi

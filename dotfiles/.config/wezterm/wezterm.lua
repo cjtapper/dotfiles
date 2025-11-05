@@ -34,8 +34,9 @@ config.colors = {
   },
 }
 config.font = wezterm.font 'BerkeleyMono Nerd Font'
+config.font_size = 14
 
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 
@@ -45,27 +46,28 @@ config.leader = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 }
 -- Direct key mappings (outside key tables)
 config.keys = {
   -- Tab switching
-  { key = 'j', mods = 'ALT',    action = wezterm.action.ActivateTabRelative(-1) },
-  { key = 'y', mods = 'ALT',    action = wezterm.action.ActivateTabRelative(1) },
+  { key = 'j', mods = 'ALT',         action = wezterm.action.ActivateTabRelative(-1) },
+  { key = 'y', mods = 'ALT',         action = wezterm.action.ActivateTabRelative(1) },
 
   -- -- Pane switching
-  { key = 'm', mods = 'ALT',    action = wezterm.action.ActivatePaneDirection('Left') },
-  { key = 'i', mods = 'ALT',    action = wezterm.action.ActivatePaneDirection('Right') },
-  { key = 'n', mods = 'ALT',    action = wezterm.action.ActivatePaneDirection('Down') },
-  { key = 'e', mods = 'ALT',    action = wezterm.action.ActivatePaneDirection('Up') },
+  { key = 'm', mods = 'ALT',         action = wezterm.action.ActivatePaneDirection('Left') },
+  { key = 'i', mods = 'ALT',         action = wezterm.action.ActivatePaneDirection('Right') },
+  { key = 'n', mods = 'ALT',         action = wezterm.action.ActivatePaneDirection('Down') },
+  { key = 'e', mods = 'ALT',         action = wezterm.action.ActivatePaneDirection('Up') },
 
   -- -- Direct tab jumps
-  { key = 'h', mods = 'LEADER', action = wezterm.action.ActivateTab(0) },
-  { key = ',', mods = 'LEADER', action = wezterm.action.ActivateTab(1) },
-  { key = '.', mods = 'LEADER', action = wezterm.action.ActivateTab(2) },
-  { key = 'n', mods = 'LEADER', action = wezterm.action.ActivateTab(3) },
-  { key = 'e', mods = 'LEADER', action = wezterm.action.ActivateTab(4) },
-  { key = 'i', mods = 'LEADER', action = wezterm.action.ActivateTab(5) },
+  { key = 'h', mods = 'LEADER',      action = wezterm.action.ActivateTab(0) },
+  { key = ',', mods = 'LEADER',      action = wezterm.action.ActivateTab(1) },
+  { key = '.', mods = 'LEADER',      action = wezterm.action.ActivateTab(2) },
+  { key = 'n', mods = 'LEADER',      action = wezterm.action.ActivateTab(3) },
+  { key = 'e', mods = 'LEADER',      action = wezterm.action.ActivateTab(4) },
+  { key = 'i', mods = 'LEADER',      action = wezterm.action.ActivateTab(5) },
 
   -- Key tables
-  { key = 't', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'TAB', one_shot = true } },
-  { key = 'p', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'PANE', one_shot = true } },
-  { key = 'c', mods = 'LEADER', action = wezterm.action.ActivateCopyMode },
+  { key = 't', mods = 'LEADER',      action = wezterm.action.ActivateKeyTable { name = 'TAB', one_shot = true } },
+  { key = 'p', mods = 'LEADER',      action = wezterm.action.ActivateKeyTable { name = 'PANE', one_shot = true } },
+  { key = 'c', mods = 'LEADER',      action = wezterm.action.ActivateCopyMode },
+  { key = 'g', mods = 'LEADER|CTRL', action = wezterm.action.ActivateLastTab },
   {
     key = '^',
     mods = 'CTRL|SHIFT',

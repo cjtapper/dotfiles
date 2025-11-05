@@ -45,10 +45,8 @@ abbr --add -- g git
 abbr --add -- gaa git add --all
 abbr --add -- gau git add --update
 abbr --add --set-cursor -- gcm git commit --message \"%\"
-abbr --add -- gca git commit --amend --noedit
 abbr --add -- gds git diff --staged
 abbr --add --set-cursor -- gsc git switch --create \"cjtapper/%\"
-abbr --add -- gr. git restore .
 abbr --add -- gsm git switch-main
 abbr --add -- gsr git switch-recent
 abbr --add -- gs- git switch -
@@ -56,8 +54,6 @@ abbr --add -- gs- git switch -
 abbr --add -- pip python -m pip
 abbr --add -- pt pytest
 abbr --add -- v $EDITOR
-
-alias vim nvim
 
 # Shift venv to the front of the path (if it was already activated). This is
 # helpful in e.g. neovim, which spawns subshells.
